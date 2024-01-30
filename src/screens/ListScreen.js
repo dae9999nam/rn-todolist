@@ -1,14 +1,37 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import ListItem from '../component/ListItem';
+import { GRAY } from '../colors';
 
-const ListScreen = ({ navigation, route }) => {
-  console.log('rendering ListScreen', route.params);
+const ListItem = memo(({ item }) => {
+  console.log(item.id);
   return (
-    <View style={styles.container}>
-      <Text style={{ fontSize: 30 }}>List Screen</Text>
-      <Button title="push" onPress={() => navigation.push('List')} />
-      <Button
-        title="navigate"
-        onPress={() => navigation.navigate('List', { ts: Date.now() })}
+    <View style={{ paddingVertical: 10, paddingHorizontal: 20 }}>
+      <Text style={{ fontSize: 20 }}>{item.task}</Text>
+    </View>
+  );
+});
+const Separator = () => {
+  return <View style={styles.separator}></View>;
+};
+
+const ListScreen = () => {
+  const todos = [
+    { id: 1, task: 'React Native', isDone: false },
+    { id: 2, task: 'FlatList', isDone: false },
+    { id: 3, task: 'React Navigation', isDone: true },
+    { id: 4, task: 'ToDo App', isDone: false },
+    { id: 5, task: 'React.memo', isDone: false },
+  ];
+
+  return (
+    <View style={StyleSheet.container}>
+      <FlatList
+        data={todos}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ListItem item={item} />}
+        windowSize={5}
+        ItemSeparatorComponent={Separator}
+        ListHeaderComponent={() => <View style={{ height: 10 }}></View>}
       />
     </View>
   );
@@ -17,8 +40,12 @@ const ListScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: GRAY.LIGHT,
+    marginVertical: 10,
+    marginHorizontal: 10,
   },
 });
 

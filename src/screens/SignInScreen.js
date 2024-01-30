@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../component/Button';
 import { signIn } from '../api/auth';
 import { useUserContext } from '../contexts/UserContext';
+import PropTypes from 'prop-types';
 
 //상태변수 설정
 const SignInScreen = () => {
