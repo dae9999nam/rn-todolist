@@ -6,7 +6,7 @@ const SettingScreen = () => {
   const { setUser } = useUserContext();
 
   return (
-    <View style={StyleSheet.container}>
+    <View style={styles.container}>
       <Button
         title="로그아웃"
         onPress={() => setUser(null)}
