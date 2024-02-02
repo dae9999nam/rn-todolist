@@ -3,10 +3,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import List from '../component/List';
 import EmptyList from '../component/EmptyList';
 
-const Separator = () => {
-  return <View style={styles.separator}></View>;
-};
-
 const ListScreen = () => {
   const { bottom } = useSafeAreaInsets();
   const todos = [];
