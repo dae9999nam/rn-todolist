@@ -9,14 +9,10 @@ import AuthStack from './navigations/AuthStack';
 const App = () => {
   const [user, setUser] = useState(null);
   return (
-    <UserContext.Provider value={'Seunghyeon'}>
+    <UserContext.Provider value={{ user, setUser }}>
       <NavigationContainer>
         <StatusBar style="dark" />
-        {user ? (
-          <MainStack user={user} setUser={setUser} />
-        ) : (
-          <AuthStack user={user} setUser={setUser} />
-        )}
+        {user ? <MainStack /> : <AuthStack />}
       </NavigationContainer>
     </UserContext.Provider>
   );
