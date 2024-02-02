@@ -1,15 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { UserProvider } from './contexts/UserContext';
 import Navigation from './navigations/Navigation';
+import UserContext from './contexts/UserContext';
+import { useState } from 'react';
+import MainStack from './navigations/MainStack';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthStack from './navigations/AuthStack';
 
 const App = () => {
+  const [user, setUser] = useState(null);
   return (
-    <UserProvider>
+    <UserContext.Provider value={'Seunghyeon'}>
       <NavigationContainer>
         <StatusBar style="dark" />
-        <Navigation />
+        {user ? (
+          <MainStack user={user} setUser={setUser} />
+        ) : (
+          <AuthStack user={user} setUser={setUser} />
+        )}
       </NavigationContainer>
-    </UserProvider>
+    </UserContext.Provider>
   );
 };
 

@@ -12,7 +12,9 @@ const AuthStack = (props) => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="SignIn" component={SignInScreen} />
+      <Stack.Screen name="SignIn">
+        {(screenProps) => <SignInScreen {...screenProps} {...props} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };

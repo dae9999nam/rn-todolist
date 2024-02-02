@@ -1,7 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 import PropTypes from 'prop-types';
-import { Header } from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const HeaderRightButton = ({ tintColor }) => {
