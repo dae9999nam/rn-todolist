@@ -1,16 +1,48 @@
-import { Pressable, StyleSheet, TextInput, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import { PRIMARY, WHITE } from '../colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const InputFAB = () => {
   const [text, setText] = useState('');
+  const [isOpened, setIsOpened] = useState(false);
+  const inputRef = useRef();
+  const windowWidth = useWindowDimensions().width;
+
+  const open = () => {
+    inputRef.current.focus();
+    setIsOpened(true);
+  };
+  const close = () => {
+    if (isOpened) {
+      inputRef.current.blur();
+      setText('');
+      setIsOpened(false);
+    }
+  };
+  const onPressButton = () => {
+    isOpened ? close() : open();
+  };
+
   return (
     <>
       <View
-        style={[styles.position, styles.shape, { justifyContent: 'center' }]}
+        style={[
+          styles.position,
+          styles.shape,
+          { justifyContent: 'center' },
+          isOpened && { width: windowWidth - 20 },
+        ]}
       >
         <TextInput
+          ref={inputRef}
+          onBlur={close}
           value={text}
           onChange={(text) => setText(text)}
           style={[styles.input]}
@@ -29,6 +61,7 @@ const InputFAB = () => {
           styles.button,
           pressed && { backgroundColor: PRIMARY.DARK },
         ]}
+        onPress={onPressButton}
       >
         <MaterialCommunityIcons name="plus" size={24} color={WHITE} />
       </Pressable>
