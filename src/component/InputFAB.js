@@ -46,7 +46,17 @@ const InputFAB = () => {
         setKeyboardHeight(BOTTOM);
       });
     }
+    return () => {
+      console.log('unmount');
+    };
   }, []);
+  useEffect(() => {
+    console.log('text: ', text);
+
+    return () => {
+      console.log('return: ', text);
+    };
+  }, [text]);
 
   return (
     <>
