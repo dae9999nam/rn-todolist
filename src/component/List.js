@@ -18,10 +18,10 @@ const List = ({ data, setIsBottom }) => {
       ListHeaderComponent={View}
       ListHeaderComponentStyle={{ height: 20 }}
       onScroll={({
-        nativeEvent: { contentOffset, layoutMeausrement, contentSize },
+        nativeEvent: { contentOffset, layoutMeasurement, contentSize },
       }) => {
         const distance =
-          contentSize.height - (contentOffset.y + layoutMeausrement.height);
+          contentSize.height - (contentOffset.y + layoutMeasurement.height);
         setIsBottom(!(distance > 20 || contentOffset.y === 0));
       }}
     />
