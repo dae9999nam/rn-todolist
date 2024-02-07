@@ -18,7 +18,7 @@ const List = ({ data, setIsBottom }) => {
       ListHeaderComponent={View}
       ListHeaderComponentStyle={{ height: 20 }}
       onScroll={({
-        nativeEnvent: { contentOffset, layoutMeausrement, contentSize },
+        nativeEvent: { contentOffset, layoutMeausrement, contentSize },
       }) => {
         const distance =
           contentSize.height - (contentOffset.y + layoutMeausrement.height);
