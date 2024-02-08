@@ -43,6 +43,12 @@ const ListScreen = () => {
     const newTodos = [{ id, task, isDone: false }, ...todos];
     save(newTodos);
   };
+
+  const onDelete = (id) => {
+    const newTodos = todos.filter((item) => item.id !== id);
+    save(newTodos);
+  };
+
   return (
     <View style={{ flex: 1, paddingBottom: bottom }}>
       {todos.length ? (
