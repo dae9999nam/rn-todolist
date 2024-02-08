@@ -49,6 +49,13 @@ const ListScreen = () => {
     save(newTodos);
   };
 
+  const onToggle = (id) => {
+    const newTodos = todos.map((item) =>
+      item.id === id ? { ...item, isDone: !item.isDone } : item
+    );
+    save(todos);
+  };
+
   return (
     <View style={{ flex: 1, paddingBottom: bottom }}>
       {todos.length ? (
