@@ -1,0 +1,12 @@
+In the given ToDo List app,
+
+*the user email = my@email.com
+*the password = 1234
+
+How to Convert files into .aab file
+1. eas build --platform <ios or android>
+2. After the .aab file is made, create a folder and move bundletool.jar and the created .aab file
+3. in the command, move to the folder and type the given command as shown below:
+  java -jar bundletool.jar build-apks --bundle=filename.aab --output=newfilename.apks --mode=universal
+
+The apks file is created
